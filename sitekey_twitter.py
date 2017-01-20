@@ -22,16 +22,18 @@ api = tweepy.API(auth)
 
 def send_tweet():
 	api.update_status('Current Adidas Sitekey as of: {} is {}'.format(datetime.now(), get_sitekey()))
+	print('Tweeted sitkey - {}'.format(sitekey))
 
 def main():
 	current_sitekey = get_sitekey()
 	send_tweet()
 	while current_sitekey == get_sitekey():
 		sleep(10*60)
+		print('Sleeping 10 minutes.')
 	print('Sitekey has changed!')
 	main()
 
-if __name__ == 'main':
+if __name__ == '__main__':
 	main()
 
 
