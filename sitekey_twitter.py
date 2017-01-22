@@ -6,7 +6,6 @@ from time import sleep
 from config import *
 from datetime import datetime
 
-
 US_link = ('http://www.adidas.com/us/white-mountaineering-campus-80s-shoes/BA7517.html', 'US')
 UK_link = ('http://www.adidas.co.uk/white-mountaineering-nmd-trail-shoes/BA7518.html', 'UK')
 AU_link = ('http://www.adidas.com.au/white-mountaineering-nmd-trail/BA7518.html', 'AU')
@@ -32,7 +31,11 @@ def send_tweet(country_link):
 	print('Tweeted {} sitekey.'.format(country_link[1]))
 
 def main():
-	sitekey_list = [get_sitekey(i) for i in country_link_list]
+	try:
+		sitekey_list = [get_sitekey(i) for i in country_link_list]
+	except TypeError:
+		print('One of the links does not have a captcha. Check your links.')
+		exit()
 	for link in country_link_list:
 		send_tweet(link)
 	while (sitekey_list[0] == get_sitekey(US_link)) & (sitekey_list[1] == get_sitekey(UK_link)) & (sitekey_list[2] == get_sitekey(AU_link)) & (sitekey_list[3] == get_sitekey(CA_link)):
@@ -43,4 +46,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
