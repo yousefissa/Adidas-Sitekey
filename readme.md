@@ -1,4 +1,5 @@
 # Sitkey Bot
+## You can get sitekey updates at twitter.com/yeezybuyer
 
 ### sitekey_only.py
 Run sitekey_only.py if you want to only get the sitekey and not tweet it out.
