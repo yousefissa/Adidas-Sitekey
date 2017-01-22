@@ -7,9 +7,11 @@ from config import *
 from datetime import datetime
 
 
-US_link = ('http://www.adidas.com/us/ultra-boost-uncaged-shoes/BA9797.html', 'US')
+US_link = ('http://www.adidas.com/us/white-mountaineering-campus-80s-shoes/BA7517.html', 'US')
 UK_link = ('http://www.adidas.co.uk/white-mountaineering-nmd-trail-shoes/BA7518.html', 'UK')
 AU_link = ('http://www.adidas.com.au/white-mountaineering-nmd-trail/BA7518.html', 'AU')
+CA_link = ('http://www.adidas.ca/en/womens-ultra-boost-shoes/BA8928.html', 'CA')
+country_link_list = [US_link, UK_link, AU_link, CA_link]
 
 # sitekey retrieval
 def get_sitekey(country_link):
@@ -30,9 +32,10 @@ def send_tweet(country_link):
 	print('Tweeted {} sitekey.'.format(country_link[1]))
 
 def main():
-	current_sitekey_US, current_sitekey_Uk, current_sitekey_AU = get_sitekey(US_link), get_sitekey(UK_link), get_sitekey(AU_link)
-	send_tweet(US_link), send_tweet(UK_link), send_tweet(AU_link)
-	while (current_sitekey_US == get_sitekey(US_link)) & (current_sitekey_Uk == get_sitekey(UK_link)) & (current_sitekey_AU == get_sitekey(AU_link)):
+	sitekey_list = [get_sitekey(i) for i in country_link_list]
+	for link in country_link_list:
+		send_tweet(link)
+	while (sitekey_list[0] == get_sitekey(US_link)) & (sitekey_list[1] == get_sitekey(UK_link)) & (sitekey_list[2] == get_sitekey(AU_link)) & (sitekey_list[3] == get_sitekey(CA_link)):
 		print('Sleeping 10 minutes.')
 		sleep(10*60)
 	print('Sitekey has changed!')
