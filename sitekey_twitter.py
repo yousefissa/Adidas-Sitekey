@@ -7,8 +7,8 @@ from config import *
 from datetime import datetime
 
 US_link = ('http://www.adidas.com/us/white-mountaineering-campus-80s-shoes/BA7517.html', 'US')
-UK_link = ('http://www.adidas.co.uk/white-mountaineering-nmd-trail-shoes/BA7518.html', 'UK')
-AU_link = ('http://www.adidas.com.au/white-mountaineering-nmd-trail/BA7518.html', 'AU')
+UK_link = ('http://www.adidas.co.uk/eqt-support-adv-shoes/BB2324.html', 'UK')
+AU_link = ('http://www.adidas.com.au/ultra-boost/BB0819.html', 'AU')
 CA_link = ('http://www.adidas.ca/en/womens-ultra-boost-shoes/BA8928.html', 'CA')
 country_link_list = [US_link, UK_link, AU_link, CA_link]
 
