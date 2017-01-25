@@ -1,7 +1,7 @@
 # Sitkey Bot
 ## You can get sitekey updates at twitter.com/yeezybuyer
 
-### You must be using Python 3+, not 2.7. 95% of errors are from using Python 2.
+#### You must be using Python 3+, not 2.7. 95% of errors are from using Python 2.
 
 ## How to run - most simple method!!! 
 Run sitekey_captcha.py. It'll ask you what country sitekey you want to go for, then it'll search the links for a sitekey and print it for you. 
