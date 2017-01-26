@@ -15,9 +15,9 @@ country_link_list = [US_link, UK_link, AU_link, CA_link, SE_link, DE_link, FR_li
 
 
 def adidas_country():
-    country = input('What website would you like to work on? Adidas US, CA, AU, SE, DE, FR or UK? ')
+    country = input('What website would you like to work on? Adidas US, CA, AU, SE, DE, FR or UK? ').upper()
     country_list = [i[1] for i in country_link_list]
-    if country.lower() not in [elem.lower() for elem in country_list]:
+    if country not in country_list:
         print('Make sure you enter only the country letters, like US, CA, etc. ')
         adidas_country()
     return str(([i[0] for i in country_link_list if i[1] == country])[0])
