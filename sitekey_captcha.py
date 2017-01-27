@@ -1,23 +1,25 @@
 from bs4 import BeautifulSoup
 import requests
 import sys
+import pyperclip
 
 print('\nSitekey Finder - twitter.com/yousefnu - github.com/yousefissa \n\n')
 
 US_link = ('http://www.adidas.com/us/shoes', 'US')
+FR_link = ('http://www.adidas.fr/chaussures', 'FR')
 UK_link = ('http://www.adidas.co.uk/shoes', 'UK')
 AU_link = ('http://www.adidas.com.au/shoes', 'AU')
 CA_link = ('http://www.adidas.ca/shoes', 'CA')
 SE_link = ('http://www.adidas.se/senaste', 'SE')
 DE_link = ('http://www.adidas.de/schuhe', 'DE')
-FR_link = ('http://www.adidas.fr/chaussures', 'FR')
-country_link_list = [US_link, UK_link, AU_link, CA_link, SE_link, DE_link, FR_link]
+IT_link = ('http://www.adidas.it/scarpe', 'IT')
+country_link_list = [US_link, FR_link, UK_link, AU_link, CA_link, SE_link, DE_link, IT_link]
 
 
 def adidas_country():
-    country = input('What website would you like to work on? Adidas US, CA, AU, SE, DE, FR or UK? ').upper()
+    country = input('What website would you like to work on? Adidas US, CA, AU, SE, DE, FR, IT or UK? ')
     country_list = [i[1] for i in country_link_list]
-    if country not in country_list:
+    if country.lower() not in [elem.lower() for elem in country_list]:
         print('Make sure you enter only the country letters, like US, CA, etc. ')
         adidas_country()
     return str(([i[0] for i in country_link_list if i[1] == country])[0])
@@ -85,7 +87,8 @@ for product in product_links:
     print('{} of {}: Checking for sitekey in: {}'.format(index, len(product_links), product))
     site_key_results = sitekey_scraper(str(product))
     if site_key_results:
-        print("\nRecaptcha Sitekey:\n\n{}\n".format(site_key_results))
+        pyperclip.copy(site_key_results)
+        print("\nFollowing Recaptcha Sitekey has been copied to clipboard:\n\n{}\n".format(site_key_results))
         break
     else:
         continue
