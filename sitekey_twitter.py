@@ -6,10 +6,10 @@ from time import sleep
 from config import *
 from datetime import datetime
 
-US_link = ('http://www.adidas.com/us/harden-vol.-1-shoes/BY3473.html', 'US')
-UK_link = ('http://www.adidas.co.uk/eqt-support-adv-shoes/BB2324.html', 'UK')
-AU_link = ('http://www.adidas.com.au/ultra-boost-shoes/BB3045.html', 'AU')
-CA_link = ('http://www.adidas.ca/en/youth-ultra-boost-shoes/BB3045.html', 'CA')
+US_link = ('http://www.adidas.com/us/ultraboost-shoes/S80635.html', 'US')
+UK_link = ('http://www.adidas.co.uk/ultra-boost-uncaged-shoes/BB4486.html', 'UK')
+AU_link = ('http://www.adidas.com.au/ultra-boost-uncaged-shoes/BB4486.html', 'AU')
+CA_link = ('http://www.adidas.ca/en/womens-pure-boost-xpose-shoes/BB1731.html', 'CA')
 country_link_list = [US_link, UK_link, AU_link, CA_link]
 
 # sitekey retrieval
