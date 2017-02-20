@@ -10,8 +10,7 @@ print('\nSitekey Finder - twitter.com/yousefnu - github.com/yousefissa \n\n')
 AR_link = ('http://www.adidas.com.ar/zapatillas', 'AR')
 AU_link = ('http://www.adidas.com.au/shoes', 'AU')
 BR_link = ('http://www.adidas.com.br/calcados', 'BR')
-CAE_link = ('http://www.adidas.ca/shoes', 'CA_EN')
-CAF_link = ('http://www.adidas.ca/fr/chaussures', 'CA_FR')
+CA_link = ('http://www.adidas.ca/shoes', 'CA')
 DE_link = ('http://www.adidas.de/schuhe', 'DE')
 DK_link = ('http://www.adidas.dk/sko', 'DK')
 ES_link = ('http://www.adidas.es/calzado', 'ES')
@@ -25,26 +24,30 @@ UK_link = ('http://www.adidas.co.uk/shoes', 'UK')
 US_link = ('http://www.adidas.com/us/shoes', 'US')
 
 
-country_link_list = [AR_link, AU_link, BR_link, CAE_link, CAF_link, DE_link, DK_link, ES_link, FR_link, IE_link, IT_link, MX_link, NOR_link, SE_link, UK_link, US_link]
+country_link_list = [AR_link, AU_link, BR_link, CA_link, DE_link, DK_link,
+                     ES_link, FR_link, IE_link, IT_link, MX_link, NOR_link, SE_link, UK_link, US_link]
+print('This script supports several countries, type in the regioncode to search: \n\n {}'.format(
+    list(country[1] for country in country_link_list)))
 
 
-print('This script supports several countries, type in the regioncode to search: \n\n /// Argentina = AR \t Australia = AU \t Brazil = BR ///\n /// Canada FR = CA_FR \t Canada EN = CA_EN \t Denmark = DK ///\n /// France = FR \t Germany = DE \t\t Ireland = IE /// \n /// Italy = IT \t Spain = ES \t\t Sweden = SE /// \n /// Norway = NO \t United Kingdoms = UK \t United States = US ///\n\n')
 def adidas_country():
     country = input('Type the country code you want to work with:')
     country_list = [i[1] for i in country_link_list]
     if country.lower() not in [elem.lower() for elem in country_list]:
-        print('Make sure you enter only the country letters, like US, CA, etc. ')
+        print(
+            'Make sure you enter only the country letters, like US, CA, etc. ')
         adidas_country()
     return str(([i[0] for i in country_link_list if i[1] == country])[0])
 
 link = adidas_country()
 params = {
-   'sz': 120,
-   'grid': 'true',
-   'start': 0
+    'sz': 120,
+    'grid': 'true',
+    'start': 0
 }
 
-product_selector = '.image a'  # selector on the product page for the individual links
+# selector on the product page for the individual links
+product_selector = '.image a'
 product_links = []  # placeholder for the individual product links
 
 captcha_class = '.g-recaptcha'  # selector for the site-key placeholder
@@ -88,7 +91,8 @@ def sitekey_scraper(url):
         return
 
 
-# Loops through the list of product categories and store the links in the all_list object
+# Loops through the list of product categories and store the links in the
+# all_list object
 product_links = category_scraper(link, product_selector)
 
 # Checks the individual products for the recaptcha sitekey
@@ -97,11 +101,13 @@ print("Starting site-key scraper. \n")
 index = 0
 for product in product_links:
     index += 1
-    print('{} of {}: Checking for sitekey in: {}'.format(index, len(product_links), product))
+    print('{} of {}: Checking for sitekey in: {}'.format(
+        index, len(product_links), product))
     site_key_results = sitekey_scraper(str(product))
     if site_key_results:
         pyperclip.copy(site_key_results)
-        print("\nFollowing Recaptcha Sitekey has been copied to clipboard:\n\n{}\n".format(site_key_results))
+        print("\nFollowing Recaptcha Sitekey has been copied to clipboard:\n\n{}\n".format(
+            site_key_results))
         break
     else:
         continue
