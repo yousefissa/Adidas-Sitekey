@@ -6,8 +6,8 @@ from time import sleep
 from config import *
 from datetime import datetime
 
-US_link = ('http://www.adidas.com/us/ultraboost-shoes/S80635.html', 'US')
-UK_link = ('http://www.adidas.co.uk/ultra-boost-uncaged-shoes/BB4486.html', 'UK')
+US_link = ('http://www.adidas.com/us/dame-3-roots-shoes/BB8337.html', 'US')
+UK_link = ('http://www.adidas.ca/en/womens-pure-boost-xpose-shoes/BB1734.html', 'UK')
 AU_link = ('http://www.adidas.com.au/ultra-boost-uncaged-shoes/BB4486.html', 'AU')
 CA_link = ('http://www.adidas.ca/en/womens-pure-boost-xpose-shoes/BB1731.html', 'CA')
 country_link_list = [US_link, UK_link, AU_link, CA_link]
@@ -20,6 +20,7 @@ def get_sitekey(country_link):
 	soup = BeautifulSoup(product_page, 'html.parser')
 	sitekey = soup.find('div', attrs={'class': 'g-recaptcha'})['data-sitekey']
 	return sitekey
+	
 
 # twitter portion
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -40,7 +41,7 @@ def main():
 		send_tweet(link)
 	while (sitekey_list[0] == get_sitekey(US_link)) & (sitekey_list[1] == get_sitekey(UK_link)) & (sitekey_list[2] == get_sitekey(AU_link)) & (sitekey_list[3] == get_sitekey(CA_link)):
 		print('Sleeping 10 minutes.')
-		sleep(10*60)
+		sleep(600)
 	print('Sitekey has changed!')
 	main()
 
