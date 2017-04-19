@@ -103,7 +103,7 @@ def product_search():
     index = 0
     for product in product_links:
         index += 1
-        print('{} of {}: Checking for sitekey in: {}'.format(index + len(product_links)*(params['start']+1), len(product_links) * (params['start']+1), product))
+        print('{} of {}: Checking for sitekey in: {}'.format(index + len(product_links)*(params['start']), len(product_links) * (params['start']+1), product))
         site_key_results = sitekey_scraper(str(product))
         if site_key_results:
             pyperclip.copy(site_key_results)
