@@ -100,7 +100,7 @@ sitekey_found = False
 
 def product_search():
     # Checks the individual products for the recaptcha sitekey
-    print("Found {} product links on page {}.\n".format(len(product_links), params['start']))
+    print("\nFound {} product links on page {}.\n".format(len(product_links), params['start']))
     index = 0
     for product in product_links:
         index += 1
