@@ -22,10 +22,12 @@ NOR_link = ('http://www.adidas.no/shoes', 'NO')
 SE_link = ('http://www.adidas.se/skor', 'SE')
 UK_link = ('http://www.adidas.co.uk/shoes', 'UK')
 US_link = ('http://www.adidas.com/us/shoes', 'US')
+RU_link = ('', 'RU')
+
 
 
 country_link_list = [AR_link, AU_link, BR_link, CA_link, DE_link, DK_link,
-                     ES_link, FR_link, IE_link, IT_link, MX_link, NOR_link, SE_link, UK_link, US_link]
+                     ES_link, FR_link, IE_link, IT_link, MX_link, NOR_link, RU_link, SE_link, UK_link, US_link]
 print('This script supports several countries, type in the regioncode to search: \n\n {}'.format(
     list(country[1] for country in country_link_list)))
 

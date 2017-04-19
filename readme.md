@@ -1,5 +1,4 @@
 # Sitkey Bot
-## You can get sitekey updates at twitter.com/yeezybuyer
 
 #### You must be using Python 3+, not 2.7. 95% of errors are from using Python 2.
 
