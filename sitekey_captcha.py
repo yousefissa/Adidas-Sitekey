@@ -29,9 +29,9 @@ country_link_list = [AR_link, AU_link, BR_link, CA_link, DE_link, DK_link,
 print('This script supports several countries, type in the regioncode to search: \n\n {}'.format(
     list(country[1] for country in country_link_list)))
 
-
+# gets the adidas country you want.
 def adidas_country():
-    country = input('Type the country code you want to work with: ')
+    country = input('\nType the country code you want to work with: ')
     country_list = [i[1] for i in country_link_list]
     if country.lower() not in [elem.lower() for elem in country_list]:
         print(
@@ -100,12 +100,11 @@ sitekey_found = False
 
 def product_search():
     # Checks the individual products for the recaptcha sitekey
-    print("\nFound {} product links on page {}.".format(len(product_links), params['start']))
-    print("Starting site-key scraper. \n")
+    print("Found {} product links on page {}.\n".format(len(product_links), params['start']))
     index = 0
     for product in product_links:
         index += 1
-        print('{} of {}: Checking for sitekey in: {}'.format(index, len(product_links) * params['start'], product))
+        print('{} of {}: Checking for sitekey in: {}'.format(index + len(product_links)*params['start']-1, len(product_links) * params['start'], product))
         site_key_results = sitekey_scraper(str(product))
         if site_key_results:
             pyperclip.copy(site_key_results)
@@ -118,7 +117,8 @@ def product_search():
 
 # # where the magic happens, u feel?
 if __name__ == "__main__":
-    if sitekey_found == False:
+    print("Starting site-key scraper. \n")
+    while sitekey_found == False:
         # loop pages lol
         params['start'] += 1
         # finally start
