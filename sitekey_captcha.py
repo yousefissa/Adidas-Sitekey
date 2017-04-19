@@ -100,13 +100,12 @@ sitekey_found = False
 
 def product_search():
     # Checks the individual products for the recaptcha sitekey
-    print("\nFound {} product links on page {}.".format(len(product_links)), params['start'])
+    print("\nFound {} product links on page {}.".format(len(product_links), params['start']))
     print("Starting site-key scraper. \n")
     index = 0
     for product in product_links:
         index += 1
-        print('{} of {}: Checking for sitekey in: {}'.format(
-            index, len(product_links), product))
+        print('{} of {}: Checking for sitekey in: {}'.format(index, len(product_links) * params['start'], product))
         site_key_results = sitekey_scraper(str(product))
         if site_key_results:
             pyperclip.copy(site_key_results)
