@@ -22,7 +22,7 @@ NOR_link = ('http://www.adidas.no/shoes', 'NO')
 SE_link = ('http://www.adidas.se/skor', 'SE')
 UK_link = ('http://www.adidas.co.uk/shoes', 'UK')
 US_link = ('http://www.adidas.com/us/shoes', 'US')
-RU_link = ('', 'RU')
+RU_link = ('http://www.adidas.ru/muzhchiny-obuv', 'RU')
 
 
 
