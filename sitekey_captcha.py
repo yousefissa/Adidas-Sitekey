@@ -117,12 +117,10 @@ def product_search():
         else:
             continue
 
-# where the magic happens, u feel?
-def main():
+# # where the magic happens, u feel?
+if __name__ == "__main__":
     if sitekey_found == False:
         # loop pages lol
         params['start'] += 1
         # finally start
         product_search()
-
-
