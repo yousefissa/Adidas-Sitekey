@@ -31,7 +31,7 @@ print('This script supports several countries, type in the regioncode to search:
 
 
 def adidas_country():
-    country = input('Type the country code you want to work with:')
+    country = input('Type the country code you want to work with: ')
     country_list = [i[1] for i in country_link_list]
     if country.lower() not in [elem.lower() for elem in country_list]:
         print(
