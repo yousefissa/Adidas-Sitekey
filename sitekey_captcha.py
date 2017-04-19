@@ -95,19 +95,34 @@ def sitekey_scraper(url):
 # all_list object
 product_links = category_scraper(link, product_selector)
 
-# Checks the individual products for the recaptcha sitekey
-print("\nFound {} product links.".format(len(product_links)))
-print("Starting site-key scraper. \n")
-index = 0
-for product in product_links:
-    index += 1
-    print('{} of {}: Checking for sitekey in: {}'.format(
-        index, len(product_links), product))
-    site_key_results = sitekey_scraper(str(product))
-    if site_key_results:
-        pyperclip.copy(site_key_results)
-        print("\nFollowing Recaptcha Sitekey has been copied to clipboard:\n\n{}\n".format(
-            site_key_results))
-        break
-    else:
-        continue
+# keeps track if sitekey is found or not.
+sitekey_found = False
+
+def product_search():
+    # Checks the individual products for the recaptcha sitekey
+    print("\nFound {} product links.".format(len(product_links)))
+    print("Starting site-key scraper. \n")
+    index = 0
+    for product in product_links:
+        index += 1
+        print('{} of {}: Checking for sitekey in: {}'.format(
+            index, len(product_links), product))
+        site_key_results = sitekey_scraper(str(product))
+        if site_key_results:
+            pyperclip.copy(site_key_results)
+            print("\nFollowing Recaptcha Sitekey has been copied to clipboard:\n\n{}\n".format(
+                site_key_results))
+            sitekey_found = True
+            break
+        else:
+            continue
+
+# where the magic happens, u feel?
+def main():
+    if sitekey_found == False:
+        # loop pages lol
+        params['start'] += 1
+        # finally start
+        product_search()
+
+
